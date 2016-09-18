@@ -1,0 +1,15 @@
+A web server makes a great pretense for a backdoor, because web traffic is so prevalent it does not raise red flags and ports 80 and 443 are frequently permitted through firewalls.
+This is a minimal HTTP 1.1 server, based on RFC 2616 from scratch, without using any HTTP libraries.
+
+Webserver program implementation:
+Command : ./normal_web_server portnumber
+
+Used socket programming and multithreading concepts.
+
+1)Establised a socket connection between the server and client browser
+2)Extracted the command after http://localhost:portno/exec/
+3)Executed the command using subprocess.Popen()
+4)If the request was not in the specified format, sent an HTTP 404 response
+4)Sent the appropriate HTTP response and the result to the client
+5)Handled SIGINT signal
+6)Sent the gzipped content to the browser by setting the appropriate headers for gzip encoding
